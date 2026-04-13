@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OAutorze.h"
+
 namespace POIOkubki {
 
 	using namespace System;
@@ -68,9 +70,9 @@ namespace POIOkubki {
 			this->zamknijToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->edycjaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->substancjeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->kubekToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->doToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->statystykaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->kubekToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->dodajKubekToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->usuñKubekToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->dodajSubstancjeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -121,8 +123,20 @@ namespace POIOkubki {
 					this->statystykaToolStripMenuItem
 			});
 			this->substancjeToolStripMenuItem->Name = L"substancjeToolStripMenuItem";
-			this->substancjeToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->substancjeToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->substancjeToolStripMenuItem->Text = L"Substancje";
+			// 
+			// doToolStripMenuItem
+			// 
+			this->doToolStripMenuItem->Name = L"doToolStripMenuItem";
+			this->doToolStripMenuItem->Size = System::Drawing::Size(156, 22);
+			this->doToolStripMenuItem->Text = L"Dodaj do menu";
+			// 
+			// statystykaToolStripMenuItem
+			// 
+			this->statystykaToolStripMenuItem->Name = L"statystykaToolStripMenuItem";
+			this->statystykaToolStripMenuItem->Size = System::Drawing::Size(156, 22);
+			this->statystykaToolStripMenuItem->Text = L"Statystyka";
 			// 
 			// kubekToolStripMenuItem
 			// 
@@ -131,37 +145,25 @@ namespace POIOkubki {
 					this->usuñKubekToolStripMenuItem, this->dodajSubstancjeToolStripMenuItem
 			});
 			this->kubekToolStripMenuItem->Name = L"kubekToolStripMenuItem";
-			this->kubekToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->kubekToolStripMenuItem->Size = System::Drawing::Size(131, 22);
 			this->kubekToolStripMenuItem->Text = L"Kubek";
-			// 
-			// doToolStripMenuItem
-			// 
-			this->doToolStripMenuItem->Name = L"doToolStripMenuItem";
-			this->doToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->doToolStripMenuItem->Text = L"Dodaj do menu";
-			// 
-			// statystykaToolStripMenuItem
-			// 
-			this->statystykaToolStripMenuItem->Name = L"statystykaToolStripMenuItem";
-			this->statystykaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->statystykaToolStripMenuItem->Text = L"Statystyka";
 			// 
 			// dodajKubekToolStripMenuItem
 			// 
 			this->dodajKubekToolStripMenuItem->Name = L"dodajKubekToolStripMenuItem";
-			this->dodajKubekToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->dodajKubekToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->dodajKubekToolStripMenuItem->Text = L"Dodaj kubek";
 			// 
 			// usuñKubekToolStripMenuItem
 			// 
 			this->usuñKubekToolStripMenuItem->Name = L"usuñKubekToolStripMenuItem";
-			this->usuñKubekToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->usuñKubekToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->usuñKubekToolStripMenuItem->Text = L"Usuñ kubek";
 			// 
 			// dodajSubstancjeToolStripMenuItem
 			// 
 			this->dodajSubstancjeToolStripMenuItem->Name = L"dodajSubstancjeToolStripMenuItem";
-			this->dodajSubstancjeToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->dodajSubstancjeToolStripMenuItem->Size = System::Drawing::Size(164, 22);
 			this->dodajSubstancjeToolStripMenuItem->Text = L"Dodaj substancje";
 			// 
 			// oAutorzeToolStripMenuItem
@@ -169,6 +171,7 @@ namespace POIOkubki {
 			this->oAutorzeToolStripMenuItem->Name = L"oAutorzeToolStripMenuItem";
 			this->oAutorzeToolStripMenuItem->Size = System::Drawing::Size(70, 20);
 			this->oAutorzeToolStripMenuItem->Text = L"O autorze";
+			this->oAutorzeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWin::oAutorzeToolStripMenuItem_Click);
 			// 
 			// MainWin
 			// 
@@ -195,5 +198,9 @@ namespace POIOkubki {
 			Application::Exit();
 
 	}
+private: System::Void oAutorzeToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	OAutorze^ autor_info = gcnew OAutorze();
+	autor_info->Show();
+}
 };
 }
