@@ -31,6 +31,7 @@ namespace POIOkubki {
 
 
 		   int cupID = -1;
+		   bool add_substance_active = false;
 	public:
 		MainWin(void)
 		{
@@ -262,7 +263,7 @@ namespace POIOkubki {
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(1164, 588);
+			this->ClientSize = System::Drawing::Size(1164, 725);
 			this->Controls->Add(this->Anuluj);
 			this->Controls->Add(this->Wlej);
 			this->Controls->Add(this->subMl);
@@ -388,7 +389,9 @@ private: System::Void dodajKubekToolStripMenuItem_Click(System::Object^ sender, 
 }
 
 private: System::Void selectCup(System::Object^ sender, System::EventArgs^ e)
-{
+{	
+	if (add_substance_active == false)
+	{
 	cleanLblCup();
 	Label^ lbl = (Label^)sender;
 	lbl->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
@@ -403,14 +406,19 @@ private: System::Void selectCup(System::Object^ sender, System::EventArgs^ e)
 	addSubMenuItem->Enabled = true;
 	addSubMenuItem->Text = L"Dodaj substancje do kubka #" +
 		Convert::ToString(cupID);
+	System::Windows::Forms::BorderStyle::Fixed3D;
+	}
 }
 
 private: System::Void MainWin_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void MainWin_Click(System::Object^ sender, System::EventArgs^ e) {
-	cleanLblCup();
+	//cleanLblCup();
+	if (add_substance_active == false) cleanLblCup();
 }
 private: System::Void addSubMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	add_substance_active = true;
+	menuStrip1->Enabled = false;
 	fillSubList();
 	subList->Location = System::Drawing::Point(12 + (10 + 199) * cupID,400);
 	subList->Visible = true;
@@ -443,6 +451,9 @@ private: System::Void subMl_KeyUp(System::Object^ sender, System::Windows::Forms
 }
 private: System::Void Anuluj_Click(System::Object^ sender, System::EventArgs^ e) {
 	cleanLblCup();
+	add_substance_active = false;
+	menuStrip1->Enabled = true;
+
 }
 private: System::Void Wlej_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ text = subMl->Text;
@@ -452,6 +463,9 @@ private: System::Void Wlej_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (index >= 0) {
 			MessageBox::Show("Poprawne dane - w kolejnym zadaniu zajmiemy siê warstw¹ logiczn¹", "Program kalkulator", MessageBoxButtons::OK,MessageBoxIcon::Information);
 			cleanLblCup();
+			add_substance_active = false;
+			menuStrip1->Enabled = true;
+
 		}
 		else {
 			MessageBox::Show("Wybierz ciecz do dolania!","Program kalkulator", MessageBoxButtons::OK,MessageBoxIcon::Error);
