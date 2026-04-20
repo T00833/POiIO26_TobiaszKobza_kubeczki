@@ -3,6 +3,8 @@
 #include "TCup.h"
 using namespace std;
 
+vector<TCup*> cups_pnt;
+
 TCup::TCup(string name, double capacity)
 {
     this->name=name;

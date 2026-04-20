@@ -26,3 +26,4 @@ private:
 };
 
 extern std::vector<TCup> cups;
+extern std::vector<TCup*> cups_pnt;
