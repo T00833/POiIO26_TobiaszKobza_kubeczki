@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <string>
 #include "TCup.h"
 using namespace std;
 
@@ -200,6 +201,19 @@ void TCup::show()
     cout << endl;
     }
 }
+
+string TCup::info(int _id)
+{
+    string info = "Kubek #" + to_string(_id) + "\n";
+    int count = substances.size();
+    for (int i = 0; i < count; i++)
+    {
+        string ml = std::to_string(volumes[i] * 1e6);
+        info += substances[i].get_name() + ": " + ml + "ml\n";
+    }
+    return info;
+}
+
 
 void TCup::calc_target_coe(double target, std::string type, std::string name)
 {

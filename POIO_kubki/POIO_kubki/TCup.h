@@ -18,6 +18,7 @@ public:
     void decant(TCup& cup2, double amount, std::string type, std::string substance);
     void show();
     void calc_target_coe(double target, std::string type, std::string name);
+    std::string info(int _id);
 
 private:
     int get_substance_id(std::string name,std::vector<TSubstance> sub);

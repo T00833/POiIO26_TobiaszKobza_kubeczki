@@ -1,5 +1,6 @@
 #pragma once
 
+#include <msclr/marshal_cppstd.h>
 #include <vector>
 #include "OAutorze.h"
 #include "TCup.h"
@@ -285,8 +286,8 @@ namespace POIOkubki {
 #pragma endregion
 
 	private: Void addTCup() {
-		TCup cup("cup", 250);
-		cups_pnt.push_back(&cup);
+		TCup* cup = new TCup("cup", 250);
+		cups_pnt.push_back(cup);
 	}
 
 
@@ -363,8 +364,22 @@ namespace POIOkubki {
 			}
 		}
 
+		void add_substance_to_cup(int vol)
+		{
+			String^ selected = subList->SelectedItem->ToString();
+			std::string name = msclr::interop::marshal_as<std::string>(selected);
+			TCup* cup_pnt = cups_pnt[cupID];
+			cup_pnt->add(name, vol);
+			show_cup_info();
+		}
 
-
+		void show_cup_info()
+		{
+			TCup* cup_pnt = cups_pnt[cupID];
+			std::string info = cup_pnt->info(cupID);
+			String^ info_cli = gcnew String(info.c_str());
+			MessageBox::Show(info_cli, "Program kalkulator",MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
 
 	private: System::Void zamknijToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::DialogResult answer;
@@ -457,15 +472,15 @@ private: System::Void Anuluj_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void Wlej_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ text = subMl->Text;
+	int vol = 0;
 	try {
-		int num = Convert::ToInt32(text);
+		vol = Convert::ToInt32(text);
 		int index = subList->SelectedIndex;
 		if (index >= 0) {
-			MessageBox::Show("Poprawne dane - w kolejnym zadaniu zajmiemy siê warstw¹ logiczn¹", "Program kalkulator", MessageBoxButtons::OK,MessageBoxIcon::Information);
+			add_substance_to_cup(vol);
 			cleanLblCup();
 			add_substance_active = false;
 			menuStrip1->Enabled = true;
-
 		}
 		else {
 			MessageBox::Show("Wybierz ciecz do dolania!","Program kalkulator", MessageBoxButtons::OK,MessageBoxIcon::Error);
