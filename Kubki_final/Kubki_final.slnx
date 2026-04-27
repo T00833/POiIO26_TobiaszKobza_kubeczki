@@ -3,5 +3,8 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="KubkiBackendCore/KubkiBackendCore.vcxproj" />
+  <Project Path="KubkiBackendCore/KubkiBackendCore.vcxproj" Id="cdcef94d-95d8-437f-98d9-288b5f7315c0" />
+  <Project Path="KubkiConsole/KubkiConsole.vcxproj" Id="0c7590c2-7bb4-4db2-b6ad-361d2d3c2730">
+    <BuildDependency Project="KubkiBackendCore/KubkiBackendCore.vcxproj" />
+  </Project>
 </Solution>
