@@ -20,6 +20,13 @@ public:
     void calc_target_coe(double target, std::string type, std::string name);
     std::string info(int _id);
 
+    std::vector<TSubstance> get_cup_substances() {
+        return substances;
+    }
+    std::vector<double> get_cup_volumes() {
+        return volumes;
+    }
+
 private:
     int get_substance_id(std::string name,std::vector<TSubstance> sub);
     void print_volume_coe();
