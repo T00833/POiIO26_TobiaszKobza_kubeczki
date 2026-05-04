@@ -91,6 +91,7 @@ namespace POIOkubki {
 
 	private: System::Void Histogram_Load(System::Object^ sender, System::EventArgs^ e) {
 		update_subs_hist();
+		//test();
 	}
 	private: Void test()
 	{
@@ -117,11 +118,12 @@ namespace POIOkubki {
 		}
 		chart1->Invalidate();
 	}
-	private: void get_hist_data(std::vector<std::string>* subs_name,
-		std::vector<int>* vols, std::vector<std::vector<int>>* colors)
+
+	private: void get_hist_data(std::vector<std::string>* subs_name, std::vector<int>* vols, std::vector<std::vector<int>>* colors)
 	{
 		int cup_count = cups_pnt.size();
 		int subs_count = substancje.size();
+
 		for (int i_sub = 0; i_sub < subs_count; i_sub++)
 		{
 			std::string name = substancje[i_sub].get_name();
@@ -131,14 +133,12 @@ namespace POIOkubki {
 			(*colors).push_back(color);
 			for (int i_cup = 0; i_cup < cup_count; i_cup++)
 			{
-				int _id_in_cup = cups_pnt[i_cup] -> get_substance_id(name,substancje);
-			if (_id_in_cup >= 0)
-			{
-				std::vector<double> cup_vols =
-					cups_pnt[i_cup]->get_cup_volumes();
-				(*vols)[i_sub] += cup_vols[_id_in_cup] *
-					1e6;
-			}
+				int _id_in_cup = cups_pnt[i_cup] -> get_substance_id(name, cups_pnt[i_cup]->get_cup_substances());
+				if (_id_in_cup >= 0)
+				{
+					std::vector<double> cup_vols = cups_pnt[i_cup]->get_cup_volumes();
+					(*vols)[i_sub] += cup_vols[_id_in_cup] * 1e6;
+				}
 			}
 		}
 	}

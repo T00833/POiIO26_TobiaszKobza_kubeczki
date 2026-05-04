@@ -159,9 +159,10 @@ void TCup::decant(TCup& cup2, double amount, string type, string substance)
 
 int TCup::get_substance_id(std::string name,std::vector<TSubstance> sub)
 {
-    int count = sub.size();
+    
     int _id = -1;
     bool run = true;
+    int count = sub.size();
 
     while(run)
     {
@@ -172,7 +173,7 @@ int TCup::get_substance_id(std::string name,std::vector<TSubstance> sub)
 
         if((_id + 1 == count) && (run == true))
         {
-            cout << "Nie znaleziono plynu o podanej nazwie: \"" << name << "\"!\n";
+            //cout << "Nie znaleziono plynu o podanej nazwie: \"" << name << "\"!\n";
             run = false;
             _id = -1;
         }
