@@ -26,9 +26,9 @@ public:
     std::vector<double> get_cup_volumes() {
         return volumes;
     }
+    int get_substance_id(std::string name, std::vector<TSubstance> sub);
 
 private:
-    int get_substance_id(std::string name,std::vector<TSubstance> sub);
     void print_volume_coe();
     void print_mass_coe();
 };

@@ -4,6 +4,7 @@
 #include <vector>
 #include "OAutorze.h"
 #include "TCup.h"
+#include "Histogram.h"
 
 namespace POIOkubki {
 
@@ -114,6 +115,7 @@ namespace POIOkubki {
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->plikToolStripMenuItem,
@@ -121,8 +123,8 @@ namespace POIOkubki {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 1, 0, 1);
-			this->menuStrip1->Size = System::Drawing::Size(456, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(6, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(684, 33);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -130,13 +132,13 @@ namespace POIOkubki {
 			// 
 			this->plikToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->zamknijToolStripMenuItem });
 			this->plikToolStripMenuItem->Name = L"plikToolStripMenuItem";
-			this->plikToolStripMenuItem->Size = System::Drawing::Size(38, 22);
+			this->plikToolStripMenuItem->Size = System::Drawing::Size(55, 29);
 			this->plikToolStripMenuItem->Text = L"Plik";
 			// 
 			// zamknijToolStripMenuItem
 			// 
 			this->zamknijToolStripMenuItem->Name = L"zamknijToolStripMenuItem";
-			this->zamknijToolStripMenuItem->Size = System::Drawing::Size(117, 22);
+			this->zamknijToolStripMenuItem->Size = System::Drawing::Size(176, 34);
 			this->zamknijToolStripMenuItem->Text = L"Zamknij";
 			this->zamknijToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWin::zamknijToolStripMenuItem_Click);
 			// 
@@ -147,7 +149,7 @@ namespace POIOkubki {
 					this->kubekToolStripMenuItem
 			});
 			this->edycjaToolStripMenuItem->Name = L"edycjaToolStripMenuItem";
-			this->edycjaToolStripMenuItem->Size = System::Drawing::Size(53, 22);
+			this->edycjaToolStripMenuItem->Size = System::Drawing::Size(78, 29);
 			this->edycjaToolStripMenuItem->Text = L"Edycja";
 			// 
 			// substancjeToolStripMenuItem
@@ -157,20 +159,21 @@ namespace POIOkubki {
 					this->statystykaToolStripMenuItem
 			});
 			this->substancjeToolStripMenuItem->Name = L"substancjeToolStripMenuItem";
-			this->substancjeToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->substancjeToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->substancjeToolStripMenuItem->Text = L"Substancje";
 			// 
 			// doToolStripMenuItem
 			// 
 			this->doToolStripMenuItem->Name = L"doToolStripMenuItem";
-			this->doToolStripMenuItem->Size = System::Drawing::Size(156, 22);
+			this->doToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->doToolStripMenuItem->Text = L"Dodaj do menu";
 			// 
 			// statystykaToolStripMenuItem
 			// 
 			this->statystykaToolStripMenuItem->Name = L"statystykaToolStripMenuItem";
-			this->statystykaToolStripMenuItem->Size = System::Drawing::Size(156, 22);
+			this->statystykaToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->statystykaToolStripMenuItem->Text = L"Statystyka";
+			this->statystykaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWin::statystykaToolStripMenuItem_Click);
 			// 
 			// kubekToolStripMenuItem
 			// 
@@ -179,13 +182,13 @@ namespace POIOkubki {
 					this->delCupMenuItem, this->addSubMenuItem
 			});
 			this->kubekToolStripMenuItem->Name = L"kubekToolStripMenuItem";
-			this->kubekToolStripMenuItem->Size = System::Drawing::Size(131, 22);
+			this->kubekToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->kubekToolStripMenuItem->Text = L"Kubek";
 			// 
 			// dodajKubekToolStripMenuItem
 			// 
 			this->dodajKubekToolStripMenuItem->Name = L"dodajKubekToolStripMenuItem";
-			this->dodajKubekToolStripMenuItem->Size = System::Drawing::Size(164, 22);
+			this->dodajKubekToolStripMenuItem->Size = System::Drawing::Size(250, 34);
 			this->dodajKubekToolStripMenuItem->Text = L"Dodaj kubek";
 			this->dodajKubekToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWin::dodajKubekToolStripMenuItem_Click);
 			// 
@@ -193,21 +196,21 @@ namespace POIOkubki {
 			// 
 			this->delCupMenuItem->Enabled = false;
 			this->delCupMenuItem->Name = L"delCupMenuItem";
-			this->delCupMenuItem->Size = System::Drawing::Size(164, 22);
+			this->delCupMenuItem->Size = System::Drawing::Size(250, 34);
 			this->delCupMenuItem->Text = L"Usuñ kubek";
 			// 
 			// addSubMenuItem
 			// 
 			this->addSubMenuItem->Enabled = false;
 			this->addSubMenuItem->Name = L"addSubMenuItem";
-			this->addSubMenuItem->Size = System::Drawing::Size(164, 22);
+			this->addSubMenuItem->Size = System::Drawing::Size(250, 34);
 			this->addSubMenuItem->Text = L"Dodaj substancje";
 			this->addSubMenuItem->Click += gcnew System::EventHandler(this, &MainWin::addSubMenuItem_Click);
 			// 
 			// oAutorzeToolStripMenuItem
 			// 
 			this->oAutorzeToolStripMenuItem->Name = L"oAutorzeToolStripMenuItem";
-			this->oAutorzeToolStripMenuItem->Size = System::Drawing::Size(70, 22);
+			this->oAutorzeToolStripMenuItem->Size = System::Drawing::Size(106, 29);
 			this->oAutorzeToolStripMenuItem->Text = L"O autorze";
 			this->oAutorzeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainWin::oAutorzeToolStripMenuItem_Click);
 			// 
@@ -221,19 +224,17 @@ namespace POIOkubki {
 			// 
 			this->subList->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->subList->FormattingEnabled = true;
-			this->subList->Location = System::Drawing::Point(8, 177);
-			this->subList->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->subList->Location = System::Drawing::Point(12, 272);
 			this->subList->Name = L"subList";
-			this->subList->Size = System::Drawing::Size(201, 21);
+			this->subList->Size = System::Drawing::Size(300, 28);
 			this->subList->TabIndex = 1;
 			this->subList->Visible = false;
 			// 
 			// subMl
 			// 
-			this->subMl->Location = System::Drawing::Point(8, 196);
-			this->subMl->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->subMl->Location = System::Drawing::Point(12, 302);
 			this->subMl->Name = L"subMl";
-			this->subMl->Size = System::Drawing::Size(201, 20);
+			this->subMl->Size = System::Drawing::Size(300, 26);
 			this->subMl->TabIndex = 2;
 			this->subMl->Text = L"Wpisz iloœæ w [ml]";
 			this->subMl->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
@@ -243,10 +244,9 @@ namespace POIOkubki {
 			// 
 			// Wlej
 			// 
-			this->Wlej->Location = System::Drawing::Point(8, 214);
-			this->Wlej->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Wlej->Location = System::Drawing::Point(12, 329);
 			this->Wlej->Name = L"Wlej";
-			this->Wlej->Size = System::Drawing::Size(50, 22);
+			this->Wlej->Size = System::Drawing::Size(75, 34);
 			this->Wlej->TabIndex = 3;
 			this->Wlej->Text = L"Wlej";
 			this->Wlej->UseVisualStyleBackColor = true;
@@ -255,10 +255,9 @@ namespace POIOkubki {
 			// 
 			// Anuluj
 			// 
-			this->Anuluj->Location = System::Drawing::Point(158, 214);
-			this->Anuluj->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Anuluj->Location = System::Drawing::Point(237, 329);
 			this->Anuluj->Name = L"Anuluj";
-			this->Anuluj->Size = System::Drawing::Size(50, 22);
+			this->Anuluj->Size = System::Drawing::Size(75, 34);
 			this->Anuluj->TabIndex = 4;
 			this->Anuluj->Text = L"Anuluj";
 			this->Anuluj->UseVisualStyleBackColor = true;
@@ -267,10 +266,10 @@ namespace POIOkubki {
 			// 
 			// MainWin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
-			this->ClientSize = System::Drawing::Size(456, 402);
+			this->ClientSize = System::Drawing::Size(684, 618);
 			this->Controls->Add(this->Anuluj);
 			this->Controls->Add(this->Wlej);
 			this->Controls->Add(this->subMl);
@@ -278,6 +277,7 @@ namespace POIOkubki {
 			this->Controls->Add(this->menuStrip1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"MainWin";
 			this->Text = L"Projekt kubeczki";
 			this->Load += gcnew System::EventHandler(this, &MainWin::MainWin_Load);
@@ -574,5 +574,9 @@ private: System::Void MainWin_KeyDown(System::Object^ sender, System::Windows::F
 	}
 }
 
+private: System::Void statystykaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	Histogram^ hist = gcnew Histogram();
+	hist->Show();
+}
 };
 }
