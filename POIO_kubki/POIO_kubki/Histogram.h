@@ -131,7 +131,7 @@ namespace POIOkubki {
 			(*colors).push_back(color);
 			for (int i_cup = 0; i_cup < cup_count; i_cup++)
 			{
-				int _id_in_cup = cups_pnt[i_cup] -> get_substance_id(name,substancje);
+				int _id_in_cup = cups_pnt[i_cup] -> getVol_id(name,substancje);
 			if (_id_in_cup >= 0)
 			{
 				std::vector<double> cup_vols =
